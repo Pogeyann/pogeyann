@@ -14,5 +14,5 @@ Here are some ideas to get you started:
 - 😄 Pronouns: 
 - ⚡ Fun fact: ...
 -->
-[Machine Learning](ML_Projects)
-[Excel](Excel_Projects)
+1. [Machine Learning](ML_Projects)
+2. [Excel](Excel_Projects)
