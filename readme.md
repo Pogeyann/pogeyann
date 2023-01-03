@@ -1,5 +1,4 @@
 # WORK N PROGRESS
 ---
-pogeyann
 
-1. [Machine Learning](ML_Projects)
+1. [Machine Learning](https://github.com/Pogeyann/ML_Projects.git)
