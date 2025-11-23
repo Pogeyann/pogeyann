@@ -1,0 +1,38 @@
+For mm and kg conversion.
+
+Private Sub Worksheet_Change(ByVal Target As Range)
+    Dim cell As Range
+    Dim val As String, num As Double, unit As String
+    Dim convVal As Double
+    
+    On Error GoTo SafeExit
+    Application.EnableEvents = False
+    
+    For Each cell In Target
+        val = Trim(cell.Value)
+        If val <> "" Then
+            Dim parts() As String
+            parts = Split(val, " ")
+            If UBound(parts) = 1 Then
+                If IsNumeric(parts(0)) Then
+                    num = CDbl(parts(0))
+                    unit = LCase(parts(1))
+                    Select Case unit
+                        Case "in", "inch", "inches"
+                            convVal = Application.WorksheetFunction.Convert(num, "in", "mm")
+                            ' Replace cell value with numeric + converted value
+                            cell.Value = num & " in (" & Format(convVal, "0.00") & " mm)"
+                        Case "lb", "lbs", "pound", "pounds"
+                            convVal = Application.WorksheetFunction.Convert(num, "lbm", "kg")
+                            cell.Value = num & " lbs (" & Format(convVal, "0.00") & " kg)"
+                        Case Else
+                            ' No action on unknown units
+                    End Select
+                End If
+            End If
+        End If
+    Next cell
+
+SafeExit:
+    Application.EnableEvents = True
+End Sub
